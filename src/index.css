@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RankMe Design System - Clean Professional Education Theme */
+
+@layer base {
+  :root {
+    /* Background & Surface Colors */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 15%;
+    --surface: 220 13% 97%;
+    --surface-elevated: 0 0% 100%;
+
+    /* Brand Colors - Professional Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 70%;
+    --primary-dark: 217 91% 50%;
+
+    /* Secondary - Clean Gray */
+    --secondary: 220 13% 91%;
+    --secondary-foreground: 220 15% 15%;
+    --secondary-light: 220 13% 95%;
+
+    /* Accent - Golden Yellow */
+    --accent: 45 93% 58%;
+    --accent-foreground: 220 15% 15%;
+    --accent-light: 45 93% 68%;
+
+    /* Ranking Colors */
+    --gold: 45 100% 50%;
+    --silver: 210 10% 70%;
+    --bronze: 25 75% 50%;
+    --diamond: 200 100% 70%;
+
+    /* Status Colors */
+    --success: 140 70% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 100% 50%;
+    --warning-foreground: 220 15% 15%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Neutral Colors */
+    --muted: 240 10% 92%;
+    --muted-foreground: 220 10% 45%;
+    --border: 240 10% 88%;
+    --input: 240 10% 90%;
+    --ring: 220 85% 50%;
+
+    /* Card & Popover */
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+
+    /* Shadows & Effects */
+    --shadow-soft: 0 2px 8px hsl(220 15% 15% / 0.08);
+    --shadow-medium: 0 4px 16px hsl(220 15% 15% / 0.12);
+    --shadow-large: 0 8px 32px hsl(220 15% 15% / 0.16);
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark Mode Colors */
+    --background: 220 15% 9%;
+    --foreground: 210 20% 95%;
+    --surface: 220 15% 11%;
+    --surface-elevated: 220 15% 13%;
+
+    --primary: 217 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 75%;
+    --primary-dark: 217 91% 55%;
+
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 210 20% 95%;
+    --secondary-light: 220 13% 22%;
+
+    --accent: 45 93% 63%;
+    --accent-foreground: 220 15% 9%;
+    --accent-light: 45 93% 73%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 210 15% 60%;
+    --border: 220 15% 18%;
+    --input: 220 15% 16%;
+    --ring: 217 91% 65%;
+
+    --card: 220 15% 13%;
+    --card-foreground: 210 20% 95%;
+    --popover: 220 15% 13%;
+    --popover-foreground: 210 20% 95%;
+
+    --shadow-soft: 0 2px 8px hsl(220 15% 5% / 0.2);
+    --shadow-medium: 0 4px 16px hsl(220 15% 5% / 0.3);
+    --shadow-large: 0 8px 32px hsl(220 15% 5% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Floating Label Input */
+  .floating-input {
+    @apply relative;
+  }
+
+  .floating-input input {
+    @apply w-full px-4 pt-6 pb-2 bg-input border border-border rounded-lg 
+           focus:ring-2 focus:ring-primary focus:border-transparent 
+           transition-all duration-200 placeholder-transparent;
+  }
+
+  .floating-input label {
+    @apply absolute left-4 top-4 text-muted-foreground transition-all duration-200 
+           pointer-events-none transform origin-left;
+  }
+
+  .floating-input input:focus + label,
+  .floating-input input:not(:placeholder-shown) + label {
+    @apply text-xs top-2 text-primary;
+  }
+
+  /* Trophy Animation */
+  .trophy-glow {
+    @apply animate-pulse;
+    filter: drop-shadow(0 0 20px hsl(var(--gold) / 0.6));
+  }
+
+  /* Ranking Cards */
+  .rank-card-gold {
+    @apply bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300
+           dark:from-yellow-900/20 dark:to-yellow-800/20 dark:border-yellow-600/50;
+    box-shadow: 0 8px 32px hsl(var(--gold) / 0.3);
+  }
+
+  .rank-card-silver {
+    @apply bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-300
+           dark:from-gray-800/20 dark:to-gray-700/20 dark:border-gray-500/50;
+    box-shadow: 0 8px 32px hsl(var(--silver) / 0.3);
+  }
+
+  .rank-card-bronze {
+    @apply bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-300
+           dark:from-orange-900/20 dark:to-orange-800/20 dark:border-orange-600/50;
+    box-shadow: 0 8px 32px hsl(var(--bronze) / 0.3);
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)];
+  }
+
+  /* Progress Bar */
+  .progress-glow {
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.4);
+  }
+}
